@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+/**
+ * 폰트 모음
+ */
 class Fonts {
   static TextStyle w500(double fontSize) {
     return GoogleFonts.ibmPlexSansKr(

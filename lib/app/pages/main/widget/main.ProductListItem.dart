@@ -3,6 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:tradeApp/app/model/product.dart';
 import 'package:tradeApp/app/constants/app.fonts.dart';
 
+/**
+ * 상품 리스트 Item 요소
+ */
 class ProductListItem extends StatelessWidget {
   final ProductData data;
   const ProductListItem({Key? key, required this.data}) : super(key: key);
@@ -44,7 +47,11 @@ class ProductListItem extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           /// 상품 제목
-                          Text(data.title ?? "제목 없음", style: Fonts.w500(20)),
+                          Text(
+                            data.title ?? "제목 없음",
+                            style: Fonts.w500(20),
+                            overflow: TextOverflow.clip,
+                          ),
 
                           /// 상품 상태
                           Text(
@@ -53,8 +60,7 @@ class ProductListItem extends StatelessWidget {
                           ),
 
                           /// 상품 가격
-                          Text(data.price.toString() + " 원",
-                              style: Fonts.w600(16)),
+                          Text("${data.price} 원", style: Fonts.w600(16)),
                         ],
                       ),
                     ),

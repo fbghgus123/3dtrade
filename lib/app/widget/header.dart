@@ -18,14 +18,16 @@ class Header extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Stack(
+      // 헤더 부분
       children: [
-        SizedBox(
-          height: height,
+        Container(
           child: headerContent,
         ),
+        // 내용 부분
         Column(
           children: [
             SizedBox(height: height),
+            const Divider(),
             child,
           ],
         )

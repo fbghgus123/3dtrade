@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 
 import '../main.controller.dart';
 import 'package:tradeApp/app/widget/header.dart';
+import 'package:tradeApp/app/pages/main/widget/main.ProductListHeader.dart';
 import 'package:tradeApp/app/pages/main/widget/main.ProductListItem.dart';
 import 'package:tradeApp/app/data/tmpProduct.dart'; // 임시 사용 데이터
 
@@ -15,8 +16,8 @@ class ProductList extends GetWidget<MainController> {
   @override
   Widget build(BuildContext context) {
     return Header(
-      height: 50,
-      headerContent: Text("헤더"),
+      height: 70,
+      headerContent: const ProductListHeader(),
       child: Expanded(
           child: ListView.builder(
               padding: const EdgeInsets.all(10),
