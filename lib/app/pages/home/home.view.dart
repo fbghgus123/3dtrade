@@ -1,21 +1,27 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:tradeApp/app/constants/app.paths.dart';
 import 'home.controller.dart';
 
 class HomeView extends GetResponsiveView<HomeController> {
   @override
   Widget builder() {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('HomeView'),
-        centerTitle: true,
-      ),
       body: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Obx(() => Text("Hello! ${controller.user.userName.value}")),
           Center(
-            child: ElevatedButton(onPressed:(){controller.logout();}, child: const Text('Log out'))
-          ),
+              child: ElevatedButton(
+                  onPressed: () {
+                    Get.toNamed(AppPaths.main);
+                  },
+                  child: const Text('메인 페이지'))),
+          Center(
+              child: ElevatedButton(
+                  onPressed: () {
+                    Get.toNamed(AppPaths.product);
+                  },
+                  child: const Text('상품 상세 페이지'))),
         ],
       ),
     );

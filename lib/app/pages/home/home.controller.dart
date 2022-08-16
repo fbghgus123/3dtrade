@@ -1,5 +1,5 @@
 import 'package:get/get.dart';
-import 'package:getx_template/app/controllers/user.controller.dart';
+import 'package:tradeApp/app/controllers/user.controller.dart';
 
 class HomeController extends GetxController {
   //TODO: Implement HomeController
@@ -18,7 +18,7 @@ class HomeController extends GetxController {
   @override
   void onClose() {}
 
-  logout(){
+  logout() {
     user.userName = ''.obs;
     Get.back();
   }

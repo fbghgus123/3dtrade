@@ -1,5 +1,5 @@
 import 'package:get/get.dart';
-import 'package:getx_template/app/controllers/user.controller.dart';
+import 'package:tradeApp/app/controllers/user.controller.dart';
 
 class GlobalBinding extends Bindings {
   @override
@@ -7,6 +7,6 @@ class GlobalBinding extends Bindings {
     /// Bindings to be used globally
     Get.lazyPut<UserController>(
       () => UserController(),
-    );  
+    );
   }
 }
