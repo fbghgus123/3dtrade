@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 import 'package:tradeApp/app/model/product.dart';
+import 'package:tradeApp/app/constants/app.paths.dart';
 import 'package:tradeApp/app/constants/app.fonts.dart';
 
 /**
@@ -14,7 +16,7 @@ class ProductListItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        print("터치");
+        Get.toNamed(AppPaths.product, arguments: data);
       },
       child: Container(
           width: double.infinity,
@@ -50,7 +52,7 @@ class ProductListItem extends StatelessWidget {
                           Text(
                             data.title ?? "제목 없음",
                             style: Fonts.w500(20),
-                            overflow: TextOverflow.clip,
+                            overflow: TextOverflow.ellipsis,
                           ),
 
                           /// 상품 상태

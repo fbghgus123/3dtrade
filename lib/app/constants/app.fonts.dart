@@ -5,6 +5,11 @@ import 'package:google_fonts/google_fonts.dart';
  * 폰트 모음
  */
 class Fonts {
+  static TextStyle w400(double fontSize) {
+    return GoogleFonts.ibmPlexSansKr(
+        fontSize: fontSize, fontWeight: FontWeight.w400, color: Colors.black);
+  }
+
   static TextStyle w500(double fontSize) {
     return GoogleFonts.ibmPlexSansKr(
         fontSize: fontSize, fontWeight: FontWeight.w500, color: Colors.black);

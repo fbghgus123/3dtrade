@@ -1,10 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'search.controller.dart';
 
-class SearchView extends GetResponsiveView<SearchController> {
+import 'search.controller.dart';
+import 'package:tradeApp/app/widget/header.dart';
+import 'package:tradeApp/app/pages/search/widget/search.header.dart';
+
+class SearchView extends GetWidget<SearchController> {
+  const SearchView({Key? key}) : super(key: key);
+
   @override
-  Widget builder() {
-    return Scaffold(body: SafeArea(child: Text("검색 뷰")));
+  Widget build(BuildContext context) {
+    return Header(
+      height: 100,
+      headerContent: const SearchHeader(),
+      child: Text("내용"),
+    );
   }
 }
