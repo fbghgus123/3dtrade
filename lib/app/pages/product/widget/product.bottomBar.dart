@@ -33,7 +33,7 @@ class ProductBottomBar extends GetWidget<ProductController> {
               style: Fonts.w600(20),
             ),
           ),
-
+          // 그냥 공백
           Expanded(
             child: Container(),
           ),

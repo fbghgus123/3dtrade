@@ -14,8 +14,10 @@ import 'package:tradeApp/app/widget/headerBottomBar.dart';
  */
 class ProductView extends GetResponsiveView<ProductController> {
   @override
+  ProductController controller = Get.put(ProductController(Get.arguments));
+
+  @override
   Widget builder() {
-    ProductData data = Get.arguments;
     return Scaffold(
         body: HeaderBottomBar(
       headerHeight: 100,
@@ -24,22 +26,22 @@ class ProductView extends GetResponsiveView<ProductController> {
       child: Column(
         children: [
           /// 상품 이미지 카루셀 슬라이드
-          ProductImage(images: data.images ?? ["none.gif"]),
+          ProductImage(images: controller.data.images ?? ["none.gif"]),
 
           /// User 정보
 
           /// 상품 정보
-          ProductInfo(data: data),
+          ProductInfo(),
 
           const Divider(),
 
           /// 상품 내용 글
-          ProductContent(data: data),
+          ProductContent(),
         ],
       ),
 
       /// 바텀 바
-      bottomContent: ProductBottomBar(data: data),
+      bottomContent: ProductBottomBar(data: controller.data),
     ));
   }
 }

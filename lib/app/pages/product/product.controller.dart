@@ -1,6 +1,11 @@
 import 'package:get/get.dart';
 
+import 'package:tradeApp/app/model/product.dart';
+
 class ProductController extends GetxController {
+  late ProductData data;
+  ProductController(this.data);
+
   @override
   void onInit() {
     super.onInit();

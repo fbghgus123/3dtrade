@@ -6,7 +6,6 @@ import 'app/pages/home/home.binding.dart';
 import 'app/pages/home/home.view.dart';
 import 'package:tradeApp/app/pages/main/main.binding.dart';
 import 'package:tradeApp/app/pages/main/main.view.dart';
-import 'package:tradeApp/app/pages/product/product.binding.dart';
 import 'package:tradeApp/app/pages/product/product.view.dart';
 
 class AppPages {
@@ -29,10 +28,6 @@ class AppPages {
         page: () => MainView(),
         binding: MainBinding(),
         middlewares: []),
-    GetPage(
-        name: AppPaths.product,
-        page: () => ProductView(),
-        binding: ProductBinding(),
-        middlewares: []),
+    GetPage(name: AppPaths.product, page: () => ProductView(), middlewares: []),
   ];
 }
