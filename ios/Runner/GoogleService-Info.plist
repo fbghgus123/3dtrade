@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>341637877135-poes1sujou988df6jhohrgugu51vjt96.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.341637877135-poes1sujou988df6jhohrgugu51vjt96</string>
+	<key>API_KEY</key>
+	<string>AIzaSyD2riOjDigbN8I2PN6C6IKaxIyoUMM3KSA</string>
+	<key>GCM_SENDER_ID</key>
+	<string>341637877135</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.app.trade3D</string>
+	<key>PROJECT_ID</key>
+	<string>dtrade-be228</string>
+	<key>STORAGE_BUCKET</key>
+	<string>dtrade-be228.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:341637877135:ios:e4df5eb875d964f023cffa</string>
+</dict>
+</plist>
