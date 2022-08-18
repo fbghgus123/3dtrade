@@ -1,4 +1,4 @@
-package com.example.getx_template
+package com.app.trade3D
 
 import io.flutter.embedding.android.FlutterActivity
 

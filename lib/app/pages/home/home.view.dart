@@ -22,6 +22,12 @@ class HomeView extends GetResponsiveView<HomeController> {
                     Get.toNamed(AppPaths.product);
                   },
                   child: const Text('상품 상세 페이지'))),
+          Center(
+              child: ElevatedButton(
+                  onPressed: () {
+                    Get.toNamed(AppPaths.login);
+                  },
+                  child: const Text('로그인 페이지'))),
         ],
       ),
     );

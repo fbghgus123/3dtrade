@@ -7,6 +7,8 @@ import 'app/pages/home/home.view.dart';
 import 'package:tradeApp/app/pages/main/main.binding.dart';
 import 'package:tradeApp/app/pages/main/main.view.dart';
 import 'package:tradeApp/app/pages/product/product.view.dart';
+import 'package:tradeApp/app/pages/login/login.binding.dart';
+import 'package:tradeApp/app/pages/login/login.view.dart';
 
 class AppPages {
   AppPages._();
@@ -29,5 +31,10 @@ class AppPages {
         binding: MainBinding(),
         middlewares: []),
     GetPage(name: AppPaths.product, page: () => ProductView(), middlewares: []),
+    GetPage(
+        name: AppPaths.login,
+        page: () => LoginView(),
+        binding: LoginBinding(),
+        middlewares: []),
   ];
 }
