@@ -47,3 +47,7 @@ app.*.map.json
 
 # 환경변수
 .env
+
+# 파이어베이스 관련 
+google-services.json
+firebase_options.dart

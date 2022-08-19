@@ -9,10 +9,14 @@ import 'app.routing.dart';
 
 void main() async {
   await dotenv.load(fileName: ".env");
+  // 카카오 초기화
   KakaoSdk.init(nativeAppKey: '${dotenv.env["KAKAO_LOGIN_API_KEY"]}');
+  // 파이어베이스 초기화
+  WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
+  // 앱 실행
   runApp(
     GetMaterialApp(
       title: AppStrings.appTitle,
