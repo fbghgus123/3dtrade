@@ -62,6 +62,7 @@ class LoginController extends GetxController {
       });
 
       await FirebaseAuth.instance.signInWithCustomToken(token);
+      print(FirebaseAuth.instance.currentUser);
 
       if (isFirebaseAuthLogin()) Get.toNamed(AppPaths.main);
     }

@@ -19,7 +19,6 @@ class HomeController extends GetxController {
   void onClose() {}
 
   logout() {
-    user.userName = ''.obs;
     Get.back();
   }
 }

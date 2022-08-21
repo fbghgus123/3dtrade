@@ -5,8 +5,6 @@ class GlobalBinding extends Bindings {
   @override
   void dependencies() {
     /// Bindings to be used globally
-    Get.lazyPut<UserController>(
-      () => UserController(),
-    );
+    Get.lazyPut<UserController>(() => UserController(), fenix: true);
   }
 }

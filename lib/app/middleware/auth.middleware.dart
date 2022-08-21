@@ -12,7 +12,7 @@ class AuthMiddleware extends GetMiddleware {
   RouteSettings? redirect(String? route) {
     UserController user = Get.find();
     // prevent page access if not logged in
-    if (user.userName.value == '') {
+    if (!user.isLogined.value) {
       return const RouteSettings(name: '/login');
     }
     return null;
