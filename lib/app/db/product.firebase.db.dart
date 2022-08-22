@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:firebase_database/firebase_database.dart';
 import 'package:tradeApp/app/db/firebase.db.controller.dart';
 
@@ -22,9 +24,14 @@ class ProductFirebaseDB {
     pushRef.set(product.toJson());
   }
 
-  selectProduct() {
-    var data = ref.orderByChild("date");
-    print("머얏");
-    print(data);
+  Future<List<ProductData>> selectProduct() async {
+    List<ProductData> result = [];
+    DatabaseEvent event = await ref.orderByChild("date").once();
+    var data = event.snapshot.value;
+    var tmp = jsonDecode(jsonEncode(data)) as Map<String, dynamic>;
+    tmp.forEach((key, value) {
+      result.add(ProductData(value));
+    });
+    return result;
   }
 }

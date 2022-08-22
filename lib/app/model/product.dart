@@ -17,7 +17,7 @@ class ProductData {
   //     this.date});
 
   ProductData(Map<String, dynamic> data) {
-    images = data["images"];
+    images = (data["images"] as List).map((item) => item as String).toList();
     title = data["title"];
     category = data["category"];
     content = data["content"];
