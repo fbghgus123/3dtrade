@@ -28,6 +28,17 @@ class HomeView extends GetResponsiveView<HomeController> {
                     Get.toNamed(AppPaths.login);
                   },
                   child: const Text('로그인 페이지'))),
+          Center(
+            child: GestureDetector(
+              onTap: () {
+                controller.trigger();
+              },
+              child: Container(
+                color: Colors.blue,
+                child: Text("트리거"),
+              ),
+            ),
+          )
         ],
       ),
     );

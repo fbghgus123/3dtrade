@@ -1,6 +1,7 @@
 {
   "project_info": {
     "project_number": "341637877135",
+    "firebase_url": "https://dtrade-be228-default-rtdb.asia-southeast1.firebasedatabase.app",
     "project_id": "dtrade-be228",
     "storage_bucket": "dtrade-be228.appspot.com"
   },
@@ -29,6 +30,13 @@
             {
               "client_id": "341637877135-1gtga3fqpr8tvnkrj8hehjhh60na1lns.apps.googleusercontent.com",
               "client_type": 3
+            },
+            {
+              "client_id": "341637877135-poes1sujou988df6jhohrgugu51vjt96.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.app.trade3D"
+              }
             }
           ]
         }

@@ -6,3 +6,7 @@ class AppPaths {
   static const product = '/product';
   static const search = '/search';
 }
+
+class dbPaths {
+  static const product = 'product';
+}
