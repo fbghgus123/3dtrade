@@ -27,8 +27,8 @@ class ProductFirebaseDB {
   Future<List<ProductData>> selectProduct() async {
     List<ProductData> result = [];
     DatabaseEvent event = await ref.orderByChild("date").once();
-    var data = event.snapshot.value;
-    var tmp = jsonDecode(jsonEncode(data)) as Map<String, dynamic>;
+    final data = event.snapshot.value;
+    final tmp = jsonDecode(jsonEncode(data)) as Map<String, dynamic>;
     tmp.forEach((key, value) {
       result.add(ProductData(value));
     });

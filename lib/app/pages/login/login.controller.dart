@@ -4,9 +4,12 @@ import 'package:get/get.dart';
 
 import 'package:tradeApp/app/pages/login/controller/login.firebase_auth_remote_data_source.dart';
 import 'package:tradeApp/app/constants/app.paths.dart';
+import 'package:tradeApp/app/db/user.firebase.db.dart';
+import 'package:tradeApp/app/model/user.dart';
 
 class LoginController extends GetxController {
   final _firebaseAuthDataSource = FirebaseAuthRemoteDataSource();
+  final _userDB = UserFirebaseDB();
   kakao.OAuthToken? kakaoToken;
   kakao.User? user;
 
@@ -63,6 +66,16 @@ class LoginController extends GetxController {
 
       await FirebaseAuth.instance.signInWithCustomToken(token);
       print(FirebaseAuth.instance.currentUser);
+
+      // db에 유 데이터 있는지 확인 후 insert
+      if (!await _userDB.existUser(FirebaseAuth.instance.currentUser!.uid)) {
+        final userData = UserData({
+          "uid": FirebaseAuth.instance.currentUser!.uid,
+          "displayName": FirebaseAuth.instance.currentUser!.displayName,
+          "imgURL": FirebaseAuth.instance.currentUser!.photoURL
+        });
+        _userDB.insertUser(userData);
+      }
 
       if (isFirebaseAuthLogin()) Get.toNamed(AppPaths.main);
     }

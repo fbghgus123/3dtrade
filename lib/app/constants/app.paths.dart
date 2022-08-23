@@ -9,4 +9,5 @@ class AppPaths {
 
 class dbPaths {
   static const product = 'product';
+  static const user = 'user';
 }
