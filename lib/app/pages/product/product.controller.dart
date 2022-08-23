@@ -7,6 +7,7 @@ import 'package:tradeApp/app/db/user.firebase.db.dart';
 class ProductController extends GetxController {
   late ProductData data;
   late UserData user;
+  RxString displayName = "".obs;
   ProductController(this.data);
 
   final _userDB = UserFirebaseDB();
@@ -15,6 +16,7 @@ class ProductController extends GetxController {
   void onInit() async {
     super.onInit();
     user = await _userDB.getUser(data.seller!) ?? user.empty();
+    displayName.value = user.displayName;
   }
 
   @override

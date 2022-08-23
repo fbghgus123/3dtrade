@@ -6,6 +6,7 @@ import 'product.controller.dart';
 import 'widget/product.image.dart';
 import 'widget/product.info.dart';
 import 'widget/product.bottomBar.dart';
+import 'widget/product.user.info.dart';
 import 'package:tradeApp/app/model/product.dart';
 import 'package:tradeApp/app/widget/headerBottomBar.dart';
 
@@ -29,6 +30,7 @@ class ProductView extends GetResponsiveView<ProductController> {
           ProductImage(images: controller.data.images ?? ["none.gif"]),
 
           /// User 정보
+          ProductUserInfo(),
 
           /// 상품 정보
           ProductInfo(),
