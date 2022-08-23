@@ -20,6 +20,10 @@ BottomNavigationBar bottomNavigationBar() {
         label: "검색",
       ),
       const BottomNavigationBarItem(
+        icon: Icon(Icons.add_circle),
+        label: "등록",
+      ),
+      const BottomNavigationBarItem(
         icon: Icon(Icons.person_outline),
         label: "내정보",
       ),

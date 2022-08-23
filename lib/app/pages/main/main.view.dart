@@ -7,9 +7,15 @@ import 'widget/main.BottomNavigation.dart';
 import 'widget/main.ProductList.dart';
 import 'package:tradeApp/app/pages/my/my.view.dart';
 import 'package:tradeApp/app/pages/search/search.view.dart';
+import 'package:tradeApp/app/pages/register/register.view.dart';
 
 class MainView extends GetResponsiveView<MainController> {
-  final List _pageOption = [ProductList(), SearchView(), MyView()];
+  final List _pageOption = [
+    ProductList(),
+    SearchView(),
+    RegisterView(),
+    MyView()
+  ];
   @override
   Widget builder() {
     return Obx(() => Scaffold(
