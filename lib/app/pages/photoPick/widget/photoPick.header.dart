@@ -20,7 +20,7 @@ class PhotoPickHeader extends StatelessWidget {
               children: [
                 Text(
                   "사진 추가",
-                  style: Fonts.w500(18),
+                  style: Fonts.w700(18),
                 ),
               ],
             ),
@@ -28,12 +28,31 @@ class PhotoPickHeader extends StatelessWidget {
 
           /// 닫기 버튼
           Container(
-              height: 50,
-              child: IconButton(
-                  onPressed: () {
-                    Get.back();
-                  },
-                  icon: const Icon(Icons.close)))
+            height: 50,
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                /// 닫기 버튼
+                Container(
+                    child: IconButton(
+                        onPressed: () {
+                          Get.back();
+                        },
+                        icon: const Icon(Icons.close))),
+
+                /// 등록 버튼
+                GestureDetector(
+                  child: Container(
+                      alignment: Alignment.center,
+                      child: Text(
+                        "추가",
+                        style: Fonts.w500(18),
+                      )),
+                ),
+              ],
+            ),
+          )
         ],
       ),
     );

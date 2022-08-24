@@ -29,4 +29,9 @@ class Fonts {
     return GoogleFonts.ibmPlexSansKr(
         fontSize: fontSize, fontWeight: FontWeight.normal, color: Colors.grey);
   }
+
+  static TextStyle hintText(double fontSize) {
+    return GoogleFonts.ibmPlexSansKr(
+        fontSize: fontSize, fontWeight: FontWeight.w600, color: Colors.grey);
+  }
 }

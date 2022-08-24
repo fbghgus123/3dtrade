@@ -19,7 +19,7 @@ class AddPhotoWidget extends GetWidget<RegisterController> {
           decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(10),
               border: Border.all(color: Colors.grey, width: 1)),
-          child: Icon(
+          child: const Icon(
             Icons.add_a_photo_outlined,
             color: Colors.grey,
           )),
