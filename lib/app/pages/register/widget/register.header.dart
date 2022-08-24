@@ -8,7 +8,6 @@ class RegisterHeader extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 50,
       padding: const EdgeInsets.only(left: 20, right: 20),
       child: Stack(
         children: [

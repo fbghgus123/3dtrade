@@ -9,6 +9,7 @@ import '../main.controller.dart';
 BottomNavigationBar bottomNavigationBar() {
   MainController controller = Get.put(MainController());
   return BottomNavigationBar(
+    type: BottomNavigationBarType.fixed,
     // ignore: prefer_const_literals_to_create_immutables
     items: <BottomNavigationBarItem>[
       const BottomNavigationBarItem(
@@ -22,6 +23,10 @@ BottomNavigationBar bottomNavigationBar() {
       const BottomNavigationBarItem(
         icon: Icon(Icons.add_circle),
         label: "등록",
+      ),
+      const BottomNavigationBarItem(
+        icon: Icon(Icons.chat_bubble),
+        label: "채팅",
       ),
       const BottomNavigationBarItem(
         icon: Icon(Icons.person_outline),
