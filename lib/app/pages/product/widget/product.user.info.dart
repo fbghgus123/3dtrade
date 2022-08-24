@@ -32,7 +32,7 @@ class ProductUserInfo extends GetWidget<ProductController> {
                     padding: const EdgeInsets.only(left: 20),
                     child: Text(
                       controller.displayName.value,
-                      style: Fonts.w400(18),
+                      style: Fonts.w500(18),
                     ),
                   ),
                 ],

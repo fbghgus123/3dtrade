@@ -4,6 +4,7 @@ import 'package:tradeApp/app/constants/app.paths.dart';
 import 'app/bindings/app.bindings.dart';
 import 'app/pages/home/home.binding.dart';
 import 'app/pages/home/home.view.dart';
+import 'app/middleware/auth.middleware.dart';
 import 'package:tradeApp/app/pages/main/main.binding.dart';
 import 'package:tradeApp/app/pages/main/main.view.dart';
 import 'package:tradeApp/app/pages/product/product.view.dart';
@@ -44,7 +45,7 @@ class AppPages {
         name: AppPaths.register,
         page: () => RegisterView(),
         binding: RegisterBinding(),
-        middlewares: []),
+        middlewares: [AuthMiddleware()]),
     GetPage(
         name: AppPaths.photoPick,
         page: () => PhotoPickView(),
