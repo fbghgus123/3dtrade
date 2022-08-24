@@ -19,28 +19,30 @@ class HeaderBottomBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Stack(
-      children: [
-        // header 부분
-        Container(
-          child: headerContent,
-        ),
-        // bottom bar 부분
-        Container(
-          alignment: Alignment.bottomCenter,
-          height: double.infinity,
-          child: bottomContent,
-        ),
-        // 내용 부분
-        SingleChildScrollView(
-          child: Column(
-            children: [
-              child,
-              SizedBox(height: bottomHeight),
-            ],
+    return SafeArea(
+      child: Stack(
+        children: [
+          // header 부분
+          Container(
+            child: headerContent,
           ),
-        ),
-      ],
+          // bottom bar 부분
+          Container(
+            alignment: Alignment.bottomCenter,
+            height: double.infinity,
+            child: bottomContent,
+          ),
+          // 내용 부분
+          SingleChildScrollView(
+            child: Column(
+              children: [
+                child,
+                SizedBox(height: bottomHeight),
+              ],
+            ),
+          ),
+        ],
+      ),
     );
   }
 }

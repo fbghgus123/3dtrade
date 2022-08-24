@@ -17,21 +17,23 @@ class Header extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Stack(
-      // 헤더 부분
-      children: [
-        Container(
-          child: headerContent,
-        ),
-        // 내용 부분
-        Column(
-          children: [
-            SizedBox(height: height),
-            const Divider(),
-            child,
-          ],
-        )
-      ],
+    return SafeArea(
+      child: Stack(
+        // 헤더 부분
+        children: [
+          Container(
+            child: headerContent,
+          ),
+          // 내용 부분
+          Column(
+            children: [
+              SizedBox(height: height),
+              const Divider(),
+              child,
+            ],
+          )
+        ],
+      ),
     );
   }
 }

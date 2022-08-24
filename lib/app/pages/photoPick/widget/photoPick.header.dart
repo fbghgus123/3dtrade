@@ -3,8 +3,8 @@ import 'package:get/get.dart';
 
 import 'package:tradeApp/app/constants/app.fonts.dart';
 
-class RegisterHeader extends StatelessWidget {
-  const RegisterHeader({Key? key}) : super(key: key);
+class PhotoPickHeader extends StatelessWidget {
+  const PhotoPickHeader({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +19,7 @@ class RegisterHeader extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text(
-                  "상품 등록",
+                  "사진 추가",
                   style: Fonts.w500(18),
                 ),
               ],

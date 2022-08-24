@@ -14,7 +14,7 @@ class MainView extends GetResponsiveView<MainController> {
   final List _pageOption = [
     ProductList(),
     SearchView(),
-    RegisterView(),
+    () {},
     ChatListView(),
     MyView()
   ];

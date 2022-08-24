@@ -16,7 +16,7 @@ class UserFirebaseDB {
 
   UserFirebaseDB() {
     con = FirebaseDBController();
-    ref = con.getRef(dbPaths.user);
+    ref = con.getRef(DBPaths.user);
     pushRef = con.getPushRef(ref);
   }
 

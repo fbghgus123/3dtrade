@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import 'package:tradeApp/app/constants/app.paths.dart';
 import '../main.controller.dart';
 
 /**
@@ -35,7 +36,10 @@ BottomNavigationBar bottomNavigationBar() {
     ],
     currentIndex: controller.indexNum.value,
     onTap: (int index) {
-      controller.indexNum.value = index;
+      if (index == 2)
+        Get.toNamed(AppPaths.register);
+      else
+        controller.indexNum.value = index;
     },
   );
 }

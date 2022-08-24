@@ -11,7 +11,7 @@ class SearchView extends GetWidget<SearchController> {
   @override
   Widget build(BuildContext context) {
     return Header(
-      height: 100,
+      height: 85,
       headerContent: const SearchHeader(),
       child: Text("내용"),
     );

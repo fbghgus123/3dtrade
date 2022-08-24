@@ -9,6 +9,10 @@ import 'package:tradeApp/app/pages/main/main.view.dart';
 import 'package:tradeApp/app/pages/product/product.view.dart';
 import 'package:tradeApp/app/pages/login/login.binding.dart';
 import 'package:tradeApp/app/pages/login/login.view.dart';
+import 'package:tradeApp/app/pages/register/register.binding.dart';
+import 'package:tradeApp/app/pages/register/register.view.dart';
+import 'package:tradeApp/app/pages/photoPick/photoPick.binding.dart';
+import 'package:tradeApp/app/pages/photoPick/photoPick.view.dart';
 
 class AppPages {
   AppPages._();
@@ -35,6 +39,16 @@ class AppPages {
         name: AppPaths.login,
         page: () => LoginView(),
         binding: LoginBinding(),
+        middlewares: []),
+    GetPage(
+        name: AppPaths.register,
+        page: () => RegisterView(),
+        binding: RegisterBinding(),
+        middlewares: []),
+    GetPage(
+        name: AppPaths.photoPick,
+        page: () => PhotoPickView(),
+        binding: PhotoPickBinding(),
         middlewares: []),
   ];
 }

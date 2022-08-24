@@ -16,7 +16,7 @@ class ProductFirebaseDB {
 
   ProductFirebaseDB() {
     con = FirebaseDBController();
-    ref = con.getRef(dbPaths.product);
+    ref = con.getRef(DBPaths.product);
     pushRef = con.getPushRef(ref);
   }
 
