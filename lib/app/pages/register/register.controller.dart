@@ -1,5 +1,6 @@
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
+import 'package:photo_manager/photo_manager.dart';
 
 import 'package:tradeApp/app/pages/register/widget/register.category.dialog.dart';
 
@@ -8,6 +9,7 @@ class RegisterController extends GetxController {
   late TextEditingController priceController;
   late TextEditingController contentController;
   RxString category = RxString("");
+  RxList<AssetEntity> images = RxList();
 
   @override
   void onInit() {
