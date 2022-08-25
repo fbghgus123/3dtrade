@@ -8,6 +8,9 @@ class PhotoPickController extends GetxController {
   /// 이미지를 포함한 폴더들
   RxList<AssetPathEntity> paths = RxList.empty();
 
+  /// 이미지 리스트
+  List<AssetEntity> images = RxList.empty();
+
   /// 나열될 이미지들
   RxList<Widget> media = RxList.empty();
 
@@ -43,12 +46,13 @@ class PhotoPickController extends GetxController {
   Future chooseFolder(AssetPathEntity folder) async {
     lastPage = currentPage;
     if (_ps.isAuth) {
-      media.value +=
-          (await folder.getAssetListPaged(page: currentPage, size: 60))
-              .asMap()
-              .entries
-              .map((entry) => _convertWidget(entry.value, entry.key))
-              .toList();
+      final data = await folder.getAssetListPaged(page: currentPage, size: 60);
+      images += data;
+      media.value += data
+          .asMap()
+          .entries
+          .map((entry) => _convertWidget(entry.value, entry.key))
+          .toList();
       currentPage++;
     }
   }
@@ -70,7 +74,7 @@ class PhotoPickController extends GetxController {
           if (snapshot.connectionState == ConnectionState.done) {
             return Obx(() => GestureDetector(
                   onTap: () {
-                    choiceImage(index);
+                    if (entity.type == AssetType.image) choiceImage(index);
                   },
                   child: Stack(
                     children: [
@@ -115,5 +119,9 @@ class PhotoPickController extends GetxController {
     } else {
       chooseImage.add(index);
     }
+  }
+
+  List<AssetEntity> returnImages() {
+    return chooseImage.map((index) => images[index]).toList();
   }
 }

@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import 'package:tradeApp/app/constants/app.fonts.dart';
+import 'package:tradeApp/app/pages/photoPick/photoPick.controller.dart';
 
-class PhotoPickHeader extends StatelessWidget {
+class PhotoPickHeader extends GetWidget<PhotoPickController> {
   const PhotoPickHeader({Key? key}) : super(key: key);
 
   @override
@@ -43,6 +44,9 @@ class PhotoPickHeader extends StatelessWidget {
 
                 /// 등록 버튼
                 GestureDetector(
+                  onTap: () {
+                    Get.back(result: controller.returnImages());
+                  },
                   child: Container(
                       alignment: Alignment.center,
                       child: Text(

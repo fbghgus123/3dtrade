@@ -1,5 +1,6 @@
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
+import 'package:photo_manager/photo_manager.dart';
 
 import 'package:tradeApp/app/pages/register/register.controller.dart';
 import 'package:tradeApp/app/constants/app.paths.dart';
@@ -9,9 +10,11 @@ class AddPhotoWidget extends GetWidget<RegisterController> {
 
   @override
   Widget build(BuildContext context) {
+    List<AssetEntity> images = List.empty();
     return GestureDetector(
-      onTap: () {
-        Get.toNamed(AppPaths.photoPick);
+      onTap: () async {
+        images = await Get.toNamed(AppPaths.photoPick);
+        print(images);
       },
       child: Container(
           height: 80,

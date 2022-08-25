@@ -18,11 +18,7 @@ class PhotoPickGridView extends GetWidget<PhotoPickController> {
               gridDelegate:
                   SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 3),
               itemBuilder: (BuildContext context, int index) {
-                return GestureDetector(
-                    onTap: () {
-                      controller.choiceImage(index);
-                    },
-                    child: controller.media[index]);
+                return controller.media[index];
               },
             ),
           ),
