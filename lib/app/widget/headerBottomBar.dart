@@ -26,12 +26,7 @@ class HeaderBottomBar extends StatelessWidget {
           Container(
             child: headerContent,
           ),
-          // bottom bar 부분
-          Container(
-            alignment: Alignment.bottomCenter,
-            height: double.infinity,
-            child: bottomContent,
-          ),
+
           // 내용 부분
           SingleChildScrollView(
             child: Column(
@@ -40,6 +35,13 @@ class HeaderBottomBar extends StatelessWidget {
                 SizedBox(height: bottomHeight),
               ],
             ),
+          ),
+
+          // bottom bar 부분
+          Container(
+            alignment: Alignment.bottomCenter,
+            height: double.infinity,
+            child: bottomContent,
           ),
         ],
       ),

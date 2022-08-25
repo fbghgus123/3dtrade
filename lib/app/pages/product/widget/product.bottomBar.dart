@@ -15,8 +15,9 @@ class ProductBottomBar extends GetWidget<ProductController> {
   @override
   Widget build(BuildContext context) {
     return Container(
+      color: Colors.white,
       padding: const EdgeInsets.only(left: 20, right: 20),
-      height: 100,
+      height: 80,
       alignment: Alignment.center,
       width: double.infinity,
       child: Row(
