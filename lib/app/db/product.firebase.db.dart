@@ -20,8 +20,10 @@ class ProductFirebaseDB {
     pushRef = con.getPushRef(ref);
   }
 
-  insertProduct(ProductData product) {
+  String? insertProduct(ProductData product) {
+    product.setKey(pushRef.key ?? "");
     pushRef.set(product.toJson());
+    return pushRef.key;
   }
 
   Future<List<ProductData>> selectProduct() async {

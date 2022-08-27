@@ -27,7 +27,7 @@ class ProductView extends GetResponsiveView<ProductController> {
       child: Column(
         children: [
           /// 상품 이미지 카루셀 슬라이드
-          ProductImage(images: controller.data.images ?? ["none.gif"]),
+          ProductImage(),
 
           /// User 정보
           ProductUserInfo(),

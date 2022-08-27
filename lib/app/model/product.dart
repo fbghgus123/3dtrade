@@ -1,5 +1,6 @@
 class ProductData {
-  List<String>? images;
+  String? key;
+  List<dynamic>? images;
   String? title;
   String? category;
   String? content;
@@ -16,8 +17,13 @@ class ProductData {
   //     this.seller,
   //     this.date});
 
+  setKey(String key) {
+    this.key = key;
+  }
+
   ProductData(Map<String, dynamic> data) {
-    images = (data["images"] as List).map((item) => item as String).toList();
+    images = data["images"];
+    key = data["key"] ?? "";
     title = data["title"];
     category = data["category"];
     content = data["content"];
@@ -28,6 +34,7 @@ class ProductData {
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
+    data['key'] = key ?? "";
     data['images'] = images;
     data['title'] = title;
     data['category'] = category;

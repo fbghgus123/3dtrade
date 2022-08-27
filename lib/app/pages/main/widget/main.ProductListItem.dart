@@ -4,11 +4,12 @@ import 'package:get/get.dart';
 import 'package:tradeApp/app/model/product.dart';
 import 'package:tradeApp/app/constants/app.paths.dart';
 import 'package:tradeApp/app/constants/app.fonts.dart';
+import 'package:tradeApp/app/pages/main/controller/main.ProductListController.dart';
 
 /**
  * 상품 리스트 Item 요소
  */
-class ProductListItem extends StatelessWidget {
+class ProductListItem extends GetWidget<ProductListContrller> {
   final ProductData data;
   const ProductListItem({Key? key, required this.data}) : super(key: key);
 
@@ -31,12 +32,8 @@ class ProductListItem extends StatelessWidget {
                     child: AspectRatio(
                       aspectRatio: 1,
                       child: ClipRRect(
-                        borderRadius: BorderRadius.circular(10),
-                        child: Image.asset(
-                          "asset/images/${data.images?[0] ?? 'none.gif'}",
-                          fit: BoxFit.cover,
-                        ),
-                      ),
+                          borderRadius: BorderRadius.circular(10),
+                          child: controller.getImage(data.images?[0])),
                     ),
                   ),
 

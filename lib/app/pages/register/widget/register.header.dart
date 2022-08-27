@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import 'package:tradeApp/app/constants/app.fonts.dart';
+import 'package:tradeApp/app/pages/register/register.controller.dart';
 
-class RegisterHeader extends StatelessWidget {
+class RegisterHeader extends GetWidget<RegisterController> {
   const RegisterHeader({Key? key}) : super(key: key);
 
   @override
@@ -43,6 +44,9 @@ class RegisterHeader extends StatelessWidget {
 
                 /// 등록 버튼
                 GestureDetector(
+                  onTap: () {
+                    controller.registerProduct();
+                  },
                   child: Container(
                       alignment: Alignment.center,
                       child: Text(

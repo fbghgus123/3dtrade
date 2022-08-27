@@ -1,5 +1,7 @@
 import 'package:get/get.dart';
 
+import 'package:tradeApp/app/db/firebase.storage.controller.dart';
+
 class MainController extends GetxController {
   @override
   void onInit() {

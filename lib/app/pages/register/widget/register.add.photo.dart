@@ -11,7 +11,11 @@ class AddPhotoWidget extends GetWidget<RegisterController> {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () async {
-        controller.images.value = await Get.toNamed(AppPaths.photoPick);
+        try {
+          controller.images.value = await Get.toNamed(AppPaths.photoPick);
+        } catch (e) {
+          print("$e 아무 사진도 선택하지 않음");
+        }
       },
       child: Container(
           height: 80,

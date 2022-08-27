@@ -1,8 +1,10 @@
 import 'package:get/get.dart';
+import 'package:flutter/material.dart';
 
 import 'package:tradeApp/app/model/product.dart';
 import 'package:tradeApp/app/model/user.dart';
 import 'package:tradeApp/app/db/user.firebase.db.dart';
+import 'package:tradeApp/app/db/firebase.storage.controller.dart';
 
 class ProductController extends GetxController {
   late ProductData data;
@@ -11,6 +13,7 @@ class ProductController extends GetxController {
   ProductController(this.data);
 
   final _userDB = UserFirebaseDB();
+  final firebaseStorageController = FirebaseStorageController();
 
   @override
   void onInit() async {
@@ -26,4 +29,8 @@ class ProductController extends GetxController {
 
   @override
   void onClose() {}
+
+  Future<String?> getFileURL(String path) async {
+    return await firebaseStorageController.getFileURL(path);
+  }
 }

@@ -1,6 +1,6 @@
 class AppStrings {
   static String appTitle = "Flutter Template";
-  static String defaultUserImage = "";
+  static String defaultUserImage = "asset/images/none.gif";
   static List<String> productCategory = [
     "디지털기기",
     "생활가전",

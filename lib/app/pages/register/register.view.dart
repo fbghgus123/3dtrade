@@ -31,6 +31,7 @@ class RegisterView extends GetResponsiveView<RegisterController> {
                     child: SingleChildScrollView(
                       scrollDirection: Axis.horizontal,
                       child: Row(
+                        mainAxisAlignment: MainAxisAlignment.start,
                         children: [
                           /// 사진 등록 버튼
                           const AddPhotoWidget(),

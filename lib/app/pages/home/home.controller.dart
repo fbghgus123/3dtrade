@@ -2,6 +2,7 @@ import 'package:get/get.dart';
 import 'package:tradeApp/app/controllers/user.controller.dart';
 
 import 'package:tradeApp/app/db/product.firebase.db.dart';
+import 'package:tradeApp/app/db/firebase.storage.controller.dart';
 
 class HomeController extends GetxController {
   //TODO: Implement HomeController
@@ -24,8 +25,5 @@ class HomeController extends GetxController {
     Get.back();
   }
 
-  trigger() {
-    var ins = ProductFirebaseDB();
-    ins.selectProduct();
-  }
+  trigger() async {}
 }
