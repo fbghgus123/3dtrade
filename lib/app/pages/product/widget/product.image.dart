@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 
 import 'package:tradeApp/app/pages/product/product.controller.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 
 class ProductImage extends GetWidget<ProductController> {
   const ProductImage({Key? key}) : super(key: key);
@@ -19,7 +20,8 @@ class ProductImage extends GetWidget<ProductController> {
                 width: double.infinity,
                 height: MediaQuery.of(context).size.width,
                 // Todo :: DB 연결 후 경로 바꿔줘야 함
-                child: Image.network(snapshot.data, fit: BoxFit.cover),
+                child: CachedNetworkImage(
+                    imageUrl: snapshot.data, fit: BoxFit.cover),
               );
             }
             return Container();

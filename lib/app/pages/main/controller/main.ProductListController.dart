@@ -1,6 +1,7 @@
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 import 'package:tradeApp/app/constants/app.paths.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 
 import 'package:tradeApp/app/model/product.dart';
 import 'package:tradeApp/app/db/product.firebase.db.dart';
@@ -36,7 +37,10 @@ class ProductListContrller extends GetxController {
         builder: (BuildContext context, AsyncSnapshot snapshot) {
           if (snapshot.connectionState == ConnectionState.done) {
             if (snapshot.data != null) {
-              return Image.network(snapshot.data, fit: BoxFit.cover);
+              return CachedNetworkImage(
+                imageUrl: snapshot.data,
+                fit: BoxFit.cover,
+              );
             }
           }
           return Image.asset(AppStrings.defaultUserImage, fit: BoxFit.cover);

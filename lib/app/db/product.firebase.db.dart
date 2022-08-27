@@ -30,6 +30,7 @@ class ProductFirebaseDB {
     List<ProductData> result = [];
     DatabaseEvent event = await ref.orderByChild("date").once();
     final data = event.snapshot.value;
+    if (data == null) return List.empty();
     final tmp = jsonDecode(jsonEncode(data)) as Map<String, dynamic>;
     tmp.forEach((key, value) {
       result.add(ProductData(value));
