@@ -11,7 +11,7 @@ class InsertContentWidget extends GetWidget<RegisterController> {
       child: TextField(
         controller: controller.contentController,
         keyboardType: TextInputType.multiline,
-        maxLines: 15,
+        maxLines: null,
         style: Fonts.w400(18),
         decoration: InputDecoration(
             border: InputBorder.none,
