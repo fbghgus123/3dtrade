@@ -41,14 +41,14 @@ class ProductBottomBar extends GetWidget<ProductController> {
 
           /// 채팅으로 거래하기 버튼
           Container(
-            height: 50,
-            padding: const EdgeInsets.only(left: 20, right: 20),
+            height: 40,
+            padding: const EdgeInsets.only(left: 10, right: 10),
             decoration: BoxDecoration(
                 color: Colors.grey, borderRadius: BorderRadius.circular(5)),
             alignment: Alignment.center,
             child: Text(
               "채팅으로 거래하기",
-              style: Fonts.w500(18),
+              style: Fonts.w500(12),
             ),
           )
         ],

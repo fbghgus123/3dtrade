@@ -7,6 +7,7 @@ class AppPaths {
   static const search = '/search';
   static const register = '/register';
   static const photoPick = '/photoPick';
+  static const chatting = '/chatting';
 }
 
 class DBPaths {

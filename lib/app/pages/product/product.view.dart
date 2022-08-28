@@ -23,7 +23,7 @@ class ProductView extends GetResponsiveView<ProductController> {
         body: HeaderBottomBar(
       headerHeight: 100,
       bottomHeight: 100,
-      headerContent: Text("헤더"),
+      headerContent: Container(),
       child: Column(
         children: [
           /// 상품 이미지 카루셀 슬라이드

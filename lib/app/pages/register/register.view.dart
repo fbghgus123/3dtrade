@@ -15,54 +15,53 @@ class RegisterView extends GetResponsiveView<RegisterController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        resizeToAvoidBottomInset: false,
         body: Header(
-          height: 50,
-          headerContent: const RegisterHeader(),
-          child: Obx(
-            () => Expanded(
-              child: Container(
-                padding: const EdgeInsets.only(left: 20, right: 20),
-                child: SingleChildScrollView(
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
-                      /// 사진 등록
-                      Padding(
-                        padding: const EdgeInsets.only(top: 10, bottom: 10),
-                        child: SingleChildScrollView(
-                          scrollDirection: Axis.horizontal,
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: [
-                              /// 사진 등록 버튼
-                              const AddPhotoWidget(),
+      height: 50,
+      headerContent: const RegisterHeader(),
+      child: Obx(
+        () => Expanded(
+          child: Container(
+            padding: const EdgeInsets.only(left: 20, right: 20),
+            child: SingleChildScrollView(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  /// 사진 등록
+                  Padding(
+                    padding: const EdgeInsets.only(top: 10, bottom: 10),
+                    child: SingleChildScrollView(
+                      scrollDirection: Axis.horizontal,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: [
+                          /// 사진 등록 버튼
+                          const AddPhotoWidget(),
 
-                              /// 선택한 사진들
-                              ...controller.images
-                                  .map((image) => RegisterImage(image: image))
-                            ],
-                          ),
-                        ),
+                          /// 선택한 사진들
+                          ...controller.images
+                              .map((image) => RegisterImage(image: image))
+                        ],
                       ),
-
-                      /// 글 제목
-                      InsertTitleWidget(),
-
-                      /// 카테고리
-                      InsertCategoryWidget(),
-
-                      /// 판매 가격
-                      InsertPriceWidget(),
-
-                      /// 글 내용
-                      InsertContentWidget(),
-                    ],
+                    ),
                   ),
-                ),
+
+                  /// 글 제목
+                  InsertTitleWidget(),
+
+                  /// 카테고리
+                  InsertCategoryWidget(),
+
+                  /// 판매 가격
+                  InsertPriceWidget(),
+
+                  /// 글 내용
+                  InsertContentWidget(),
+                ],
               ),
             ),
           ),
-        ));
+        ),
+      ),
+    ));
   }
 }

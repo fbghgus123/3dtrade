@@ -14,6 +14,8 @@ import 'package:tradeApp/app/pages/register/register.binding.dart';
 import 'package:tradeApp/app/pages/register/register.view.dart';
 import 'package:tradeApp/app/pages/photoPick/photoPick.binding.dart';
 import 'package:tradeApp/app/pages/photoPick/photoPick.view.dart';
+import 'package:tradeApp/app/pages/chatting/chatting.binding.dart';
+import 'package:tradeApp/app/pages/chatting/chatting.view.dart';
 
 class AppPages {
   AppPages._();
@@ -50,6 +52,11 @@ class AppPages {
         name: AppPaths.photoPick,
         page: () => PhotoPickView(),
         binding: PhotoPickBinding(),
+        middlewares: []),
+    GetPage(
+        name: AppPaths.chatting,
+        page: () => ChattingView(),
+        binding: ChattingBinding(),
         middlewares: []),
   ];
 }
