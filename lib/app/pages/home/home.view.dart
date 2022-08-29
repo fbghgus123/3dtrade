@@ -29,11 +29,18 @@ class HomeView extends GetResponsiveView<HomeController> {
                   },
                   child: const Text('로그인 페이지'))),
           Center(
+              child: ElevatedButton(
+                  onPressed: () {
+                    Get.toNamed(AppPaths.chatting);
+                  },
+                  child: const Text('채팅 페이지'))),
+          Center(
             child: GestureDetector(
               onTap: () {
                 controller.trigger();
               },
               child: Container(
+                padding: EdgeInsets.all(10),
                 color: Colors.blue,
                 child: Text("트리거"),
               ),

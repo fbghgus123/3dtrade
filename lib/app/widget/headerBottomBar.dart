@@ -40,7 +40,6 @@ class HeaderBottomBar extends StatelessWidget {
           // bottom bar 부분
           Container(
             alignment: Alignment.bottomCenter,
-            height: double.infinity,
             child: bottomContent,
           ),
         ],

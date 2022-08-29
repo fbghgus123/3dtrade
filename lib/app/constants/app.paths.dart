@@ -13,4 +13,7 @@ class AppPaths {
 class DBPaths {
   static const product = 'product';
   static const user = 'user';
+  static const chattingRoom = 'chattingRoom';
+  static const chatUser = 'chatUser';
+  static const message = 'message';
 }
