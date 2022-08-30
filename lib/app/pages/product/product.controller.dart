@@ -51,7 +51,7 @@ class ProductController extends GetxController {
     if (await chattingController.existChatting(productKey!, uid)) {
       print("기존 채팅방");
       Get.toNamed(AppPaths.chatting,
-          arguments: {"key": chattingController.existChatKey});
+          arguments: {"key": chattingController.existChatKey, "isNew": false});
     }
     // 새로운 채팅일 경우
     else {
@@ -61,8 +61,10 @@ class ProductController extends GetxController {
         "sellerUid": data.seller,
       };
       await chattingController.createChattingRoom(roomData);
-      Get.toNamed(AppPaths.chatting,
-          arguments: {"key": chattingController.chattingRoomKey});
+      Get.toNamed(AppPaths.chatting, arguments: {
+        "key": chattingController.chattingRoomKey,
+        "isNew": true
+      });
     }
   }
 }

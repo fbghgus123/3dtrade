@@ -40,13 +40,11 @@ class ChattingFirebaseDB {
   Future<bool> existChatting(String productKey, String uid) async {
     DatabaseEvent event =
         await chatUserRef.orderByChild("productKey").equalTo(productKey).once();
+    if (!event.snapshot.exists) return false;
+
     final data = event.snapshot.value;
     Map<String, dynamic> tmp = {};
-    try {
-      tmp = jsonDecode(jsonEncode(data)) as Map<String, dynamic>;
-    } catch (e) {
-      return false;
-    }
+    tmp = jsonDecode(jsonEncode(data)) as Map<String, dynamic>;
     bool result = false;
     tmp.forEach((key, value) {
       if (value["uid"] == uid) {
@@ -74,5 +72,15 @@ class ChattingFirebaseDB {
     DatabaseReference chatUserPushRef = con.getPushRef(chatUserRef);
     final chatUser = ChatUser(data);
     chatUserPushRef.set(chatUser.toJson());
+  }
+
+  /**
+   * 첫 메세지인지 확인합니다.
+   */
+  Future<bool> isFirstMessage(String roomKey) async {
+    final message =
+        await messageRef.orderByChild("roomKey").equalTo(roomKey).once();
+    if (message.snapshot.exists) return true;
+    return false;
   }
 }

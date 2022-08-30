@@ -2,7 +2,7 @@ class Message {
   String? key;
   late String uid;
   late String message;
-  late String roomId;
+  late String roomKey;
   late int createdAt;
   bool check = false;
   String? imgURL;
@@ -18,7 +18,7 @@ class Message {
   Message(Map<String, dynamic> data) {
     uid = data["uid"];
     message = data["message"];
-    roomId = data["roomId"];
+    roomKey = data["roomKey"];
     createdAt = DateTime.now().millisecondsSinceEpoch;
   }
 
@@ -27,7 +27,7 @@ class Message {
     data['key'] = key ?? "";
     data['uid'] = uid;
     data['message'] = message;
-    data['roomId'] = roomId;
+    data['roomId'] = roomKey;
     data['createdAt'] = createdAt;
     data['check'] = check;
     data['imgURL'] = imgURL ?? "";
