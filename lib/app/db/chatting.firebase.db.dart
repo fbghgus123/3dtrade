@@ -20,6 +20,12 @@ class ChattingFirebaseDB {
   // 메세지 관련 ref
   late DatabaseReference messageRef;
 
+  // 기존 채팅방 키
+  late String existChatKey;
+
+  // 새로운 채팅방 키
+  String? get chattingRoomKey => chattingRoomPushRef.key;
+
   ChattingFirebaseDB() {
     con = FirebaseDBController();
     chattingRoomRef = con.getRef(DBPaths.chattingRoom);
@@ -29,34 +35,36 @@ class ChattingFirebaseDB {
   }
 
   /**
-   * 해당 상품 관련하여 해당 유저가 채팅이 존재하는지 확인합니다
+   * 해당 상품 관련하여 해당 유저와의 채팅이 존재하는지 확인합니다
    */
   Future<bool> existChatting(String productKey, String uid) async {
     DatabaseEvent event =
         await chatUserRef.orderByChild("productKey").equalTo(productKey).once();
     final data = event.snapshot.value;
-    final tmp = jsonDecode(jsonEncode(data)) as Map<String, dynamic>;
+    Map<String, dynamic> tmp = {};
+    try {
+      tmp = jsonDecode(jsonEncode(data)) as Map<String, dynamic>;
+    } catch (e) {
+      return false;
+    }
     bool result = false;
     tmp.forEach((key, value) {
       if (value["uid"] == uid) {
         result = true;
+        final tmpRoom = jsonDecode(jsonEncode(value)) as Map<String, dynamic>;
+        existChatKey = tmpRoom["roomKey"];
       }
     });
     return result;
   }
 
-  String? get chattingRoomKey => chattingRoomPushRef.key;
-
   /**
    * 채팅방을 개설합니다.
    */
-  createChattingRoom(Map<String, dynamic> data) {
-    /// 해당 상품의 ChatUser 조회 -> 자신의 uid 있는지 없는지 확인
-    /// 있으면 기존 채팅방으로 이동
-    /// 없으면 새로운 채팅방 개설
+  createChattingRoom(Map<String, dynamic> data) async {
     data["key"] = chattingRoomKey;
     final chattingRoomData = ChattingRoom(data);
-    chattingRoomPushRef.set(chattingRoomData.toJson());
+    await chattingRoomPushRef.set(chattingRoomData.toJson());
   }
 
   /**
