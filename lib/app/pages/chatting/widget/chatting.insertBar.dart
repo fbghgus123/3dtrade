@@ -24,7 +24,10 @@ class ChattingInsertBar extends GetWidget<ChattingController> {
         Container(
           color: Colors.green,
           child: IconButton(
-              onPressed: controller.sendMessage(), icon: Icon(Icons.send)),
+              onPressed: () {
+                controller.sendMessage();
+              },
+              icon: Icon(Icons.send)),
         )
       ],
     );

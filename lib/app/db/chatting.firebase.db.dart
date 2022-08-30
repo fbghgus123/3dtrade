@@ -21,7 +21,7 @@ class ChattingFirebaseDB {
   late DatabaseReference messageRef;
 
   // 기존 채팅방 키
-  late String existChatKey;
+  String? existChatKey;
 
   // 새로운 채팅방 키
   String? get chattingRoomKey => chattingRoomPushRef.key;
@@ -56,6 +56,15 @@ class ChattingFirebaseDB {
     return result;
   }
 
+  Future<ChattingRoom?> getChattingRoom(String roomKey) async {
+    final chattingRoom =
+        await chattingRoomRef.orderByChild("key").equalTo(roomKey).once();
+    if (!chattingRoom.snapshot.exists) return null;
+    final data = chattingRoom.snapshot.child(roomKey).value;
+    final tmp = jsonDecode(jsonEncode(data)) as Map<String, dynamic>;
+    return ChattingRoom(tmp);
+  }
+
   /**
    * 채팅방을 개설합니다.
    */
@@ -74,13 +83,11 @@ class ChattingFirebaseDB {
     chatUserPushRef.set(chatUser.toJson());
   }
 
-  /**
-   * 첫 메세지인지 확인합니다.
-   */
-  Future<bool> isFirstMessage(String roomKey) async {
-    final message =
-        await messageRef.orderByChild("roomKey").equalTo(roomKey).once();
-    if (message.snapshot.exists) return true;
-    return false;
+  createMessage(Map<String, dynamic> data) {
+    final messagePushRef = con.getPushRef(messageRef.child(data["roomKey"]));
+    data["key"] = messagePushRef.key;
+    print(data);
+    final message = Message(data);
+    messagePushRef.set(message.toJson());
   }
 }

@@ -1,5 +1,5 @@
 class Message {
-  String? key;
+  late String key;
   late String uid;
   late String message;
   late String roomKey;
@@ -7,18 +7,16 @@ class Message {
   bool check = false;
   String? imgURL;
 
-  setKey(String key) {
-    this.key = key;
-  }
-
   checkMessage() {
     check = true;
   }
 
   Message(Map<String, dynamic> data) {
+    key = data["key"];
     uid = data["uid"];
     message = data["message"];
     roomKey = data["roomKey"];
+    check = false;
     createdAt = DateTime.now().millisecondsSinceEpoch;
   }
 

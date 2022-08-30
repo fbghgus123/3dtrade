@@ -10,9 +10,10 @@ import 'package:tradeApp/app/db/firebase.storage.controller.dart';
 import 'package:tradeApp/app/db/chatting.firebase.db.dart';
 
 class ChattingController extends GetxController {
-  late TextEditingController textController;
-  late ChattingRoom chattingRoom;
   late UserController user;
+  late TextEditingController textController;
+  ChattingRoom? chattingRoom;
+
   final _userDB = UserFirebaseDB();
   final firebaseStorageController = FirebaseStorageController();
   final chattingController = ChattingFirebaseDB();
@@ -30,29 +31,29 @@ class ChattingController extends GetxController {
     user = Get.find();
   }
 
-  /// 메세지 id 생성을 위한 랜덤 String 생성 함수
-  String _randomString() {
-    final random = Random.secure();
-    final values = List<int>.generate(16, (i) => random.nextInt(255));
-    return base64UrlEncode(values);
-  }
-
   sendMessage() async {
     // 첫 메세지인 경우 채팅 유저 추가하는 작업
     if (isFirstMessage) {
       // 판매자 채팅 유저 추가
       chattingController.createChattingUser({
-        "productKey": chattingRoom.productKey,
+        "productKey": chattingRoom!.productKey,
         "roomKey": roomKey,
-        "uid": chattingRoom.sellerUid
+        "uid": chattingRoom!.sellerUid
       });
       // 구매자 채팅 유저 추가
       chattingController.createChattingUser({
-        "productKey": chattingRoom.productKey,
+        "productKey": chattingRoom!.productKey,
         "roomKey": roomKey,
         "uid": user.uid,
       });
       isFirstMessage = false;
     }
+
+    Map<String, dynamic> chat = {
+      "uid": user.uid,
+      "message": textController.text,
+      "roomKey": roomKey,
+    };
+    chattingController.createMessage(chat);
   }
 }
