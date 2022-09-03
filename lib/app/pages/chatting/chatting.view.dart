@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import 'package:tradeApp/app/widget/headerBottomBar.dart';
+import './widget/chatting.chat.screen.dart';
 
 import 'chatting.controller.dart';
 import 'widget/chatting.insertBar.dart';
@@ -15,7 +16,7 @@ class ChattingView extends GetResponsiveView<ChattingController> {
       headerHeight: 0,
       bottomContent: ChattingInsertBar(),
       bottomHeight: 100,
-      child: Text("채팅창"),
+      child: ChattingChatScreen(),
     ));
   }
 }

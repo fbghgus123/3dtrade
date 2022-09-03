@@ -26,9 +26,12 @@ class ChattingController extends GetxController {
     super.onInit();
     textController = TextEditingController();
     final tmp = await chattingController.getChattingRoom(roomKey);
-    if (tmp == null) Get.back();
-    chattingRoom = tmp!;
-    user = Get.find();
+    if (tmp == null)
+      Get.back();
+    else {
+      chattingRoom = tmp;
+      user = Get.find();
+    }
   }
 
   sendMessage() async {
