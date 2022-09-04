@@ -25,7 +25,7 @@ class Message {
     data['key'] = key ?? "";
     data['uid'] = uid;
     data['message'] = message;
-    data['roomId'] = roomKey;
+    data['roomKey'] = roomKey;
     data['createdAt'] = createdAt;
     data['check'] = check;
     data['imgURL'] = imgURL ?? "";

@@ -13,8 +13,6 @@ class HeaderBottomBar extends StatelessWidget {
     required this.headerContent,
     required this.bottomContent,
     required this.child,
-    required this.headerHeight,
-    required this.bottomHeight,
   }) : super(key: key);
 
   @override
@@ -28,14 +26,7 @@ class HeaderBottomBar extends StatelessWidget {
           ),
 
           // 내용 부분
-          SingleChildScrollView(
-            child: Column(
-              children: [
-                child,
-                SizedBox(height: bottomHeight),
-              ],
-            ),
-          ),
+          child,
 
           // bottom bar 부분
           Container(

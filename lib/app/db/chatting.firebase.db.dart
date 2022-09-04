@@ -86,8 +86,20 @@ class ChattingFirebaseDB {
   createMessage(Map<String, dynamic> data) {
     final messagePushRef = con.getPushRef(messageRef.child(data["roomKey"]));
     data["key"] = messagePushRef.key;
-    print(data);
     final message = Message(data);
     messagePushRef.set(message.toJson());
+  }
+
+  /**
+   * 채팅방의 메세지들을 받아옵니다.
+   */
+  getMessages(String roomKey, Function processing) async {
+    final roomMessageRef = messageRef.child(roomKey);
+    roomMessageRef.onChildAdded.listen((event) {}).onData((data) {
+      final tmp =
+          jsonDecode(jsonEncode(data.snapshot.value)) as Map<String, dynamic>;
+      final messageData = Message(tmp);
+      processing(messageData);
+    });
   }
 }

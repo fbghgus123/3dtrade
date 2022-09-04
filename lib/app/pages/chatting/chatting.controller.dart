@@ -2,21 +2,28 @@ import 'dart:convert';
 import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:chat_bubbles/chat_bubbles.dart';
 
 import 'package:tradeApp/app/controllers/user.controller.dart';
 import 'package:tradeApp/app/model/chattingRoom.dart';
+import 'package:tradeApp/app/model/message.dart';
+import 'package:tradeApp/app/model/product.dart';
 import 'package:tradeApp/app/db/user.firebase.db.dart';
 import 'package:tradeApp/app/db/firebase.storage.controller.dart';
 import 'package:tradeApp/app/db/chatting.firebase.db.dart';
+import 'package:tradeApp/app/db/product.firebase.db.dart';
 
 class ChattingController extends GetxController {
   late UserController user;
   late TextEditingController textController;
   ChattingRoom? chattingRoom;
+  Rx<ProductData?> productData = Rx(null);
+  RxList<Widget> chat = RxList.empty();
 
   final _userDB = UserFirebaseDB();
   final firebaseStorageController = FirebaseStorageController();
   final chattingController = ChattingFirebaseDB();
+  final productDBController = ProductFirebaseDB();
   final roomKey = Get.arguments["key"];
 
   bool isFirstMessage = Get.arguments["isNew"];
@@ -32,6 +39,13 @@ class ChattingController extends GetxController {
       chattingRoom = tmp;
       user = Get.find();
     }
+
+    productData.value =
+        await productDBController.getProduct(chattingRoom?.productKey ?? "");
+
+    chattingController.getMessages(roomKey, (Message msg) {
+      chat.add(_chatBubble(msg));
+    });
   }
 
   sendMessage() async {
@@ -58,5 +72,25 @@ class ChattingController extends GetxController {
       "roomKey": roomKey,
     };
     chattingController.createMessage(chat);
+
+    // 입력창에서 채팅 삭제
+    textController.clear();
+  }
+
+  Widget _chatBubble(Message msg) {
+    if (msg.uid == user.uid) {
+      return BubbleSpecialThree(
+        text: msg.message,
+        color: Color(0xFF1B97F3),
+        tail: false,
+        textStyle: TextStyle(color: Colors.white, fontSize: 16),
+      );
+    }
+    return BubbleSpecialThree(
+      text: msg.message,
+      color: Color(0xFFE8E8EE),
+      tail: false,
+      isSender: false,
+    );
   }
 }

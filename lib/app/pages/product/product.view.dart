@@ -21,25 +21,29 @@ class ProductView extends GetResponsiveView<ProductController> {
   Widget builder() {
     return Scaffold(
         body: HeaderBottomBar(
-      headerHeight: 100,
-      bottomHeight: 100,
       headerContent: Container(),
-      child: Column(
-        children: [
-          /// 상품 이미지 카루셀 슬라이드
-          ProductImage(),
+      child: SingleChildScrollView(
+        child: Column(
+          children: [
+            /// 상품 이미지 카루셀 슬라이드
+            ProductImage(),
 
-          /// User 정보
-          ProductUserInfo(),
+            /// User 정보
+            ProductUserInfo(),
 
-          /// 상품 정보
-          ProductInfo(),
+            /// 상품 정보
+            ProductInfo(),
 
-          const Divider(),
+            const Divider(),
 
-          /// 상품 내용 글
-          ProductContent(),
-        ],
+            /// 상품 내용 글
+            ProductContent(),
+
+            SizedBox(
+              height: 100,
+            )
+          ],
+        ),
       ),
 
       /// 바텀 바

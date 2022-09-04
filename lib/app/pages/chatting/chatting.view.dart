@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:tradeApp/app/pages/chatting/widget/chatting.header.dart';
 
 import 'package:tradeApp/app/widget/headerBottomBar.dart';
 import './widget/chatting.chat.screen.dart';
@@ -12,11 +13,19 @@ class ChattingView extends GetResponsiveView<ChattingController> {
   Widget builder() {
     return Scaffold(
         body: HeaderBottomBar(
-      headerContent: Container(),
-      headerHeight: 0,
+      headerContent: ChattingHeader(),
       bottomContent: ChattingInsertBar(),
-      bottomHeight: 100,
-      child: ChattingChatScreen(),
+      child: Column(
+        children: [
+          SizedBox(
+            height: 130,
+          ),
+          Expanded(child: ChattingChatScreen()),
+          SizedBox(
+            height: 50,
+          ),
+        ],
+      ),
     ));
   }
 }

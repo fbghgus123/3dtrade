@@ -37,4 +37,11 @@ class ProductFirebaseDB {
     });
     return result;
   }
+
+  Future<ProductData> getProduct(String productKey) async {
+    DatabaseEvent event = await ref.child(productKey).once();
+    final data = event.snapshot.value;
+    final tmp = jsonDecode(jsonEncode(data)) as Map<String, dynamic>;
+    return ProductData(tmp);
+  }
 }
