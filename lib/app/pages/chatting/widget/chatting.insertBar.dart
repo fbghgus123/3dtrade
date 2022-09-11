@@ -9,16 +9,22 @@ class ChattingInsertBar extends GetWidget<ChattingController> {
   Widget build(BuildContext context) {
     return Row(
       children: [
-        new Flexible(
-          child: TextField(
-            controller: controller.textController,
-            keyboardType: TextInputType.multiline,
-            maxLines: null,
-            style: Fonts.w400(18),
-            decoration: InputDecoration(
-                border: InputBorder.none,
-                hintText: "메세지를 입력하세요",
-                hintStyle: Fonts.subText(18)),
+        Flexible(
+          child: Container(
+            color: Colors.white,
+            child: TextField(
+              controller: controller.textController,
+              keyboardType: TextInputType.multiline,
+              maxLines: null,
+              onTap: () {
+                controller.scrollAnimate(context);
+              },
+              style: Fonts.w400(18),
+              decoration: InputDecoration(
+                  border: InputBorder.none,
+                  hintText: "메세지를 입력하세요",
+                  hintStyle: Fonts.subText(18)),
+            ),
           ),
         ),
         Container(

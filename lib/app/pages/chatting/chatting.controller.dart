@@ -16,6 +16,7 @@ import 'package:tradeApp/app/db/product.firebase.db.dart';
 class ChattingController extends GetxController {
   late UserController user;
   late TextEditingController textController;
+  final scrollController = ScrollController();
   ChattingRoom? chattingRoom;
   Rx<ProductData?> productData = Rx(null);
   RxList<Widget> chat = RxList.empty();
@@ -75,6 +76,18 @@ class ChattingController extends GetxController {
 
     // 입력창에서 채팅 삭제
     textController.clear();
+    scrollController.animateTo(scrollController.position.minScrollExtent,
+        duration: const Duration(milliseconds: 100),
+        curve: Curves.fastOutSlowIn);
+  }
+
+   Future<String?> getFileURL(String? path) async {
+    if (path == null) return null;
+    try {
+      return await firebaseStorageController.getFileURL(path);
+    } catch (e) {
+      return null;
+    }
   }
 
   Widget _chatBubble(Message msg) {
@@ -92,5 +105,9 @@ class ChattingController extends GetxController {
       tail: false,
       isSender: false,
     );
+  }
+
+  void scrollAnimate(BuildContext context) {
+
   }
 }
