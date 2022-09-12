@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 
 import 'package:tradeApp/app/pages/product/product.controller.dart';
+import 'package:tradeApp/app/constants/app.strings.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 
 class ProductImage extends GetWidget<ProductController> {
@@ -19,13 +20,20 @@ class ProductImage extends GetWidget<ProductController> {
               return Container(
                 width: double.infinity,
                 height: MediaQuery.of(context).size.width,
-                // Todo :: DB 연결 후 경로 바꿔줘야 함
                 child: CachedNetworkImage(
                     imageUrl: snapshot.data, fit: BoxFit.cover),
               );
             }
             return Container();
           });
+    }
+
+    if (controller.data.images == null) {
+      return Container(
+        width: double.infinity,
+        height: MediaQuery.of(context).size.width,
+        child: Image.asset(AppStrings.defaultUserImage, fit: BoxFit.cover),
+      );
     }
 
     return Container(

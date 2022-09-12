@@ -12,11 +12,14 @@ import 'package:tradeApp/app/model/chatUser.dart';
  */
 class ChattingFirebaseDB {
   late FirebaseDBController con;
+
   // 채팅방 관련 ref
   late DatabaseReference chattingRoomRef;
   late DatabaseReference chattingRoomPushRef;
+
   // 채팅방 - 유저 연결 관련 ref
   late DatabaseReference chatUserRef;
+
   // 메세지 관련 ref
   late DatabaseReference messageRef;
 
@@ -56,6 +59,9 @@ class ChattingFirebaseDB {
     return result;
   }
 
+  /**
+   * 해당 roomKey에 해당하는 채팅방을 반환합니다.
+   */
   Future<ChattingRoom?> getChattingRoom(String roomKey) async {
     final chattingRoom =
         await chattingRoomRef.orderByChild("key").equalTo(roomKey).once();
@@ -63,6 +69,14 @@ class ChattingFirebaseDB {
     final data = chattingRoom.snapshot.child(roomKey).value;
     final tmp = jsonDecode(jsonEncode(data)) as Map<String, dynamic>;
     return ChattingRoom(tmp);
+  }
+
+  getChattingRooms(String uid, Function callback) {
+    chatUserRef.orderByChild("uid").equalTo(uid).onChildAdded.listen((event) {
+      final data = event.snapshot.value;
+      final tmp = jsonDecode(jsonEncode(data)) as Map<String, dynamic>;
+      callback(ChatUser(tmp));
+    });
   }
 
   /**
@@ -83,6 +97,25 @@ class ChattingFirebaseDB {
     chatUserPushRef.set(chatUser.toJson());
   }
 
+  Future<List<ChatUser>> getChattingUser(String? uid) async {
+    List<ChatUser> result = [];
+    final chatUser = await chatUserRef.orderByChild("uid").equalTo(uid).once();
+    final data = chatUser.snapshot.value;
+    final tmp = jsonDecode(jsonEncode(data)) as Map<String, dynamic>;
+    for (Map<String, dynamic> chat in tmp.values) {
+      result.add(ChatUser(chat));
+    }
+    return result;
+  }
+
+  Future<Map<String, dynamic>> getChattingUsers(String roomKey) async {
+    final chatUsers =
+        await chatUserRef.orderByChild("roomKey").equalTo(roomKey).once();
+    final data = chatUsers.snapshot.value;
+    final tmp = jsonDecode(jsonEncode(data)) as Map<String, dynamic>;
+    return tmp;
+  }
+
   createMessage(Map<String, dynamic> data) {
     final messagePushRef = con.getPushRef(messageRef.child(data["roomKey"]));
     data["key"] = messagePushRef.key;
@@ -101,5 +134,15 @@ class ChattingFirebaseDB {
       final messageData = Message(tmp);
       processing(messageData);
     });
+  }
+
+  Future<Message?> getRecentMessage(String roomKey) async {
+    final message = await messageRef.child(roomKey).limitToLast(1).once();
+    final data = message.snapshot.value;
+    if(data == null) return null;
+    final tmp = jsonDecode(jsonEncode(data)) as Map<String, dynamic>;
+    for (Map<String, dynamic> messageData in tmp.values) {
+      return Message(messageData);
+    }
   }
 }

@@ -7,6 +7,8 @@ import 'package:tradeApp/app/constants/app.strings.dart';
 import 'package:tradeApp/app/constants/app.fonts.dart';
 
 class ChattingHeader extends GetWidget<ChattingController> {
+  const ChattingHeader({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     Widget productImage() {

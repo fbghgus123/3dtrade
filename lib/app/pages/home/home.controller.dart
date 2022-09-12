@@ -5,6 +5,8 @@ import 'package:tradeApp/app/db/product.firebase.db.dart';
 import 'package:tradeApp/app/db/firebase.storage.controller.dart';
 import 'package:tradeApp/app/db/chatting.firebase.db.dart';
 
+import '../../model/chatUser.dart';
+
 class HomeController extends GetxController {
   //TODO: Implement HomeController
   UserController user = Get.find();
@@ -27,8 +29,7 @@ class HomeController extends GetxController {
   }
 
   trigger() async {
-    final productDB = ProductFirebaseDB();
-    final data = await productDB.getProduct("-NATfKomTcQqVhVVgryk");
-    print(data);
+    final chatDB = ChattingFirebaseDB();
+    chatDB.getRecentMessage("-NAj285qKBRTvmhpNr6Q");
   }
 }

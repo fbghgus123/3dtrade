@@ -57,6 +57,6 @@ class AppPages {
         name: AppPaths.chatting,
         page: () => ChattingView(),
         binding: ChattingBinding(),
-        middlewares: []),
+        middlewares: [AuthMiddleware()]),
   ];
 }

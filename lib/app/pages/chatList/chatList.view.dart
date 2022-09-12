@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import 'chatList.controller.dart';
+import './widget/chatList.header.dart';
 import 'package:tradeApp/app/widget/header.dart';
+import 'package:tradeApp/app/pages/chatList/widget/chatList.list.dart';
 
 class ChatListView extends GetWidget<ChatListController> {
   const ChatListView({Key? key}) : super(key: key);
@@ -10,9 +12,15 @@ class ChatListView extends GetWidget<ChatListController> {
   @override
   Widget build(BuildContext context) {
     return Header(
-      height: 100,
-      headerContent: const Text("채팅 헤더"),
-      child: Text("내용"),
-    );
+        headerContent: const ChatListHeader(),
+        child: Expanded(child: ChatList()),
+        height: 70);
+
+    //   Stack(
+    //   children: const [
+    //     ChatListHeader(),
+    //     ChatList()
+    //   ],
+    // );
   }
 }
