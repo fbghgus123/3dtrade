@@ -92,7 +92,7 @@ class ChatListController extends GetxController {
                 height: 50,
                 child: ClipRRect(
                     borderRadius: BorderRadius.circular(10),
-                  child: Image.asset(AppStrings.defaultUserImage, fit: BoxFit.cover),
+                  child: getImage(path),
                 )
               )
             ],
