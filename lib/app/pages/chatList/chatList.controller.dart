@@ -1,6 +1,7 @@
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:tradeApp/app/constants/app.paths.dart';
 
 import 'package:tradeApp/app/db/chatting.firebase.db.dart';
 import 'package:tradeApp/app/db/firebase.storage.controller.dart';
@@ -48,8 +49,8 @@ class ChatListController extends GetxController {
     final recentMessage = await chattingDB.getRecentMessage(chatUser.roomKey);
     final userData = await userDB.getUser(user.uid);
     final productData = await productDB.getProduct(chatUser.productKey);
-    chatRoomList
-        .add(_convertWidget({"user": userData, "message": recentMessage, "product": productData}));
+    chatRoomList.add(_convertWidget(
+        {"user": userData, "message": recentMessage, "product": productData}));
   }
 
   Widget _convertWidget(Map<String, dynamic> data) {
@@ -66,36 +67,41 @@ class ChatListController extends GetxController {
         Container(
           padding: const EdgeInsets.only(top: 5, bottom: 5),
           width: double.infinity,
-          child: Row(
-            children: [
-              Container(
-                width: 50,
-                height: 50,
-                decoration: const BoxDecoration(
-                  shape: BoxShape.circle,
-                  color: Colors.orange,
+          child: GestureDetector(
+            onTap: () {
+              joinRoom(data["message"].roomKey);
+            },
+            child: Row(
+              children: [
+                Container(
+                  width: 50,
+                  height: 50,
+                  decoration: const BoxDecoration(
+                    shape: BoxShape.circle,
+                    color: Colors.orange,
+                  ),
                 ),
-              ),
-              Expanded(
-                child: Container(
-                  padding: const EdgeInsets.only(left: 10),
-                  child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                    Text(data["user"].displayName, style: Fonts.w600(14)),
-                    Text(data["message"]?.message ?? "메세지 없음", overflow: TextOverflow.ellipsis),
-                  ]),
+                Expanded(
+                  child: Container(
+                    padding: const EdgeInsets.only(left: 10),
+                    child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(data["user"].displayName, style: Fonts.w600(14)),
+                          Text(data["message"]?.message ?? "메세지 없음",
+                              overflow: TextOverflow.ellipsis),
+                        ]),
+                  ),
                 ),
-              ),
-              Container(
-                width: 50,
-                height: 50,
-                child: ClipRRect(
-                    borderRadius: BorderRadius.circular(10),
-                  child: getImage(path),
-                )
-              )
-            ],
+                Container(
+                    width: 50,
+                    height: 50,
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(10),
+                      child: getImage(path),
+                    ))
+              ],
+            ),
           ),
         ),
         const Divider()
@@ -126,5 +132,12 @@ class ChatListController extends GetxController {
           }
           return Image.asset(AppStrings.defaultUserImage, fit: BoxFit.cover);
         });
+  }
+
+  joinRoom(String roomKey) {
+    Get.toNamed(AppPaths.chatting, arguments: {
+      "key": roomKey,
+      "isNew": false,
+    });
   }
 }
