@@ -36,10 +36,13 @@ BottomNavigationBar bottomNavigationBar() {
     ],
     currentIndex: controller.indexNum.value,
     onTap: (int index) {
-      if (index == 2)
+      if (index == 1) {
+        Get.toNamed(AppPaths.search);
+      } else if (index == 2) {
         Get.toNamed(AppPaths.register);
-      else
+      } else {
         controller.indexNum.value = index;
+      }
     },
   );
 }
