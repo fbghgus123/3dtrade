@@ -12,7 +12,7 @@ class SearchView extends GetResponsiveView<SearchController> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Header(
-        height: 85,
+        height: 100,
         headerContent: const SearchHeader(),
         child: Text("내용"),
       ),

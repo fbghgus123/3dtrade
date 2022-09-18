@@ -1,5 +1,6 @@
 import 'package:get/get.dart';
 import 'package:tradeApp/app/constants/app.paths.dart';
+import 'package:tradeApp/app/pages/search/search.binding.dart';
 import 'package:tradeApp/app/pages/search/search.view.dart';
 
 import 'app/bindings/app.bindings.dart';
@@ -59,6 +60,6 @@ class AppPages {
         page: () => ChattingView(),
         binding: ChattingBinding(),
         middlewares: [AuthMiddleware()]),
-    GetPage(name: AppPaths.search, page: () => SearchView())
+    GetPage(name: AppPaths.search, page: () => SearchView(), binding: SearchBinding()),
   ];
 }
