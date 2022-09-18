@@ -5,7 +5,9 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:tradeApp/app/constants/app.paths.dart';
 import 'package:tradeApp/app/constants/app.fonts.dart';
 import 'package:tradeApp/app/constants/app.strings.dart';
+import 'package:tradeApp/app/controllers/user.controller.dart';
 import 'package:tradeApp/app/db/firebase.storage.controller.dart';
+import 'package:tradeApp/app/db/keyword.firebase.db.dart';
 import 'package:tradeApp/app/db/product.firebase.db.dart';
 import 'package:tradeApp/app/model/product.dart';
 
@@ -13,6 +15,8 @@ class SearchController extends GetxController {
   late TextEditingController searchTextController;
   late ProductFirebaseDB productFirebaseDB;
   late FirebaseStorageController firebaseStorageController;
+  late KeywordFirebaseDB keywordFirebaseDB;
+  late UserController userController;
   final isSearch = RxBool(false);
   RxList<Widget> productList = RxList.empty();
 
@@ -22,6 +26,8 @@ class SearchController extends GetxController {
     searchTextController = TextEditingController();
     productFirebaseDB = ProductFirebaseDB();
     firebaseStorageController = FirebaseStorageController();
+    keywordFirebaseDB = KeywordFirebaseDB();
+    userController = Get.find();
   }
 
   @override
@@ -32,10 +38,15 @@ class SearchController extends GetxController {
   @override
   void onClose() {}
 
+  getKeworsds() {
+
+  }
+
   search(String keyword) async {
     final data = await productFirebaseDB.searchProduct(keyword);
     productList.value = data.map((product) => convertProductItem(product)).toList();
     isSearch.value = true;
+    keywordFirebaseDB.setKeyword(userController?.uid ?? "client", keyword);
   }
 
   Widget convertProductItem(ProductData data) {

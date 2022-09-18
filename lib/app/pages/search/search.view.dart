@@ -18,7 +18,7 @@ class SearchView extends GetResponsiveView<SearchController> {
                 children: [
                   SearchHeader(),
                   Container(
-                    padding: EdgeInsets.only(top: 115),
+                    padding: EdgeInsets.only(top: 115, left: 20, right: 20),
                     child:
                         controller.isSearch.value ? SearchList() : SearchPrev(),
                   )

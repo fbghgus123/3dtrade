@@ -16,4 +16,5 @@ class DBPaths {
   static const chattingRoom = 'chattingRoom';
   static const chatUser = 'chatUser';
   static const message = 'message';
+  static const keyword = 'keyword';
 }
