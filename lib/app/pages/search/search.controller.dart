@@ -19,6 +19,7 @@ class SearchController extends GetxController {
   late UserController userController;
   final isSearch = RxBool(false);
   RxList<Widget> productList = RxList.empty();
+  RxList<String> keywords = RxList.empty();
 
   @override
   void onInit() {
@@ -33,13 +34,14 @@ class SearchController extends GetxController {
   @override
   void onReady() {
     super.onReady();
+    getKeywords();
   }
 
   @override
   void onClose() {}
 
-  getKeworsds() {
-
+  getKeywords() async {
+    keywords.value = await keywordFirebaseDB.getKeywords(userController?.uid ?? "");
   }
 
   search(String keyword) async {
@@ -47,6 +49,12 @@ class SearchController extends GetxController {
     productList.value = data.map((product) => convertProductItem(product)).toList();
     isSearch.value = true;
     keywordFirebaseDB.setKeyword(userController?.uid ?? "client", keyword);
+  }
+
+  searchWithCategory(String category) async {
+    final data = await productFirebaseDB.searchProductWithCategory(category);
+    productList.value = data.map((product) => convertProductItem(product)).toList();
+    isSearch.value = true;
   }
 
   Widget convertProductItem(ProductData data) {

@@ -44,8 +44,9 @@ class KeywordFirebaseDB {
 
   Future<List<String>> getKeywords(String uid) async {
     List<String> result = [];
-    final keywords = await ref.child(uid).once();
+    final keywords = await ref.child(uid).orderByChild("createdAt").once();
     final data = keywords.snapshot.value;
+    print(data);
     final tmp = jsonDecode(jsonEncode(data)) as Map<String, dynamic>;
     tmp.forEach((key, value) {
       result.add(value["keyword"]);

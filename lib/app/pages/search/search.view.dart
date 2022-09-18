@@ -14,7 +14,7 @@ class SearchView extends GetResponsiveView<SearchController> {
   Widget build(BuildContext context) {
     return Scaffold(
         body: Obx(() => SafeArea(
-          child: Stack(
+              child: Stack(
                 children: [
                   SearchHeader(),
                   Container(
@@ -24,6 +24,6 @@ class SearchView extends GetResponsiveView<SearchController> {
                   )
                 ],
               ),
-        )));
+            )));
   }
 }
