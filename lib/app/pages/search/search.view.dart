@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:tradeApp/app/pages/search/widget/search.list.dart';
+import 'package:tradeApp/app/pages/search/widget/search.prev.dart';
 
 import 'search.controller.dart';
 import 'package:tradeApp/app/widget/header.dart';
@@ -11,11 +13,17 @@ class SearchView extends GetResponsiveView<SearchController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Header(
-        height: 100,
-        headerContent: const SearchHeader(),
-        child: Text("내용"),
-      ),
-    );
+        body: Obx(() => SafeArea(
+          child: Stack(
+                children: [
+                  SearchHeader(),
+                  Container(
+                    padding: EdgeInsets.only(top: 115),
+                    child:
+                        controller.isSearch.value ? SearchList() : SearchPrev(),
+                  )
+                ],
+              ),
+        )));
   }
 }

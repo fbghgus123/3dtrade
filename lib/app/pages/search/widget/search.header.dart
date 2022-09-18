@@ -46,6 +46,7 @@ class SearchHeader extends GetWidget<SearchController> {
                   borderRadius: BorderRadius.circular(10),
                 ),
                 child: TextField(
+                  onSubmitted: controller.search,
                   controller: controller.searchTextController,
                   style: Fonts.w500(16),
                   decoration: const InputDecoration(

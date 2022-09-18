@@ -22,7 +22,7 @@ class Message {
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['key'] = key ?? "";
+    data['key'] = key;
     data['uid'] = uid;
     data['message'] = message;
     data['roomKey'] = roomKey;

@@ -44,4 +44,19 @@ class ProductFirebaseDB {
     final tmp = jsonDecode(jsonEncode(data)) as Map<String, dynamic>;
     return ProductData(tmp);
   }
+
+  Future<List<ProductData>> searchProduct(String keyword) async {
+    List<ProductData> result = [];
+    DatabaseEvent event = await ref
+        .orderByChild("title")
+        .startAt(keyword)
+        .endAt(keyword + "\uf8ff")
+        .once();
+    final data = event.snapshot.value;
+    final tmp = jsonDecode(jsonEncode(data)) as Map<String, dynamic>;
+    tmp.forEach((key, value) {
+      result.add(ProductData(value));
+    });
+    return result;
+  }
 }

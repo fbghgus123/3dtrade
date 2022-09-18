@@ -29,7 +29,7 @@ class HomeController extends GetxController {
   }
 
   trigger() async {
-    final chatDB = ChattingFirebaseDB();
-    chatDB.getRecentMessage("-NAj285qKBRTvmhpNr6Q");
+    final productDB = ProductFirebaseDB();
+    await productDB.searchProduct("우리");
   }
 }
