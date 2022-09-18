@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import 'package:tradeApp/app/pages/my/my.controller.dart';
 import 'main.controller.dart';
 
 class MainBinding extends Bindings {
@@ -7,5 +8,6 @@ class MainBinding extends Bindings {
     Get.lazyPut<MainController>(
       () => MainController(),
     );
+    Get.lazyPut<MyController>(() => MyController());
   }
 }

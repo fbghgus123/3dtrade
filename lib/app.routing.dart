@@ -54,7 +54,7 @@ class AppPages {
         name: AppPaths.photoPick,
         page: () => PhotoPickView(),
         binding: PhotoPickBinding(),
-        middlewares: []),
+        middlewares: [AuthMiddleware()]),
     GetPage(
         name: AppPaths.chatting,
         page: () => ChattingView(),

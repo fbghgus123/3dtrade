@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import 'package:tradeApp/app/constants/app.fonts.dart';
+import 'package:tradeApp/app/constants/app.paths.dart';
 import 'package:tradeApp/app/pages/main/main.controller.dart';
 
 /**
@@ -27,9 +28,9 @@ class ProductListHeader extends GetWidget<MainController> {
         Row(
           // ignore: prefer_const_literals_to_create_immutables
           children: [
-            const Icon(Icons.search, size: 36.0),
-            const SizedBox(width: 30),
-            const Icon(Icons.menu, size: 36.0),
+            IconButton(onPressed: () {
+              Get.toNamed(AppPaths.search);
+            }, icon: const Icon(Icons.search, size: 36.0)),
             const SizedBox(width: 30),
             const Icon(Icons.notifications_none_outlined, size: 36.0),
           ],

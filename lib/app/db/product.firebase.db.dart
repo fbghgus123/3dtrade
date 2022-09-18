@@ -53,10 +53,12 @@ class ProductFirebaseDB {
         .endAt(keyword + "\uf8ff")
         .once();
     final data = event.snapshot.value;
-    final tmp = jsonDecode(jsonEncode(data)) as Map<String, dynamic>;
-    tmp.forEach((key, value) {
-      result.add(ProductData(value));
-    });
+    if (event.snapshot.exists) {
+      final tmp = jsonDecode(jsonEncode(data)) as Map<String, dynamic>;
+      tmp.forEach((key, value) {
+        result.add(ProductData(value));
+      });
+    }
     return result;
   }
   
@@ -64,10 +66,12 @@ class ProductFirebaseDB {
     List<ProductData> result = [];
     DatabaseEvent event = await ref.orderByChild("category").equalTo(category).once();
     final data = event.snapshot.value;
-    final tmp = jsonDecode(jsonEncode(data)) as Map<String, dynamic>;
-    tmp.forEach((key, value) {
-      result.add(ProductData(value));
-    });
+    if (event.snapshot.exists) {
+      final tmp = jsonDecode(jsonEncode(data)) as Map<String, dynamic>;
+      tmp.forEach((key, value) {
+        result.add(ProductData(value));
+      });
+    }
     return result;
   }
 }
